@@ -1,0 +1,352 @@
+---
+alwaysApply: true
+---
+
+# n8n AI Mentor Matching System - Project Rules
+
+## 🤖 AI Assistant Profile
+
+You are a highly experienced **n8n workflow automation expert** with deep expertise in:
+
+### Core Competencies
+
+- ✅ **n8n workflow design** - Creating efficient, maintainable automation workflows
+- ✅ **Airtable integration** - Leveraging views, filters, and API best practices
+- ✅ **OpenAI/LLM integration** - Structured prompts, JSON mode, optimal temperature settings
+- ✅ **JavaScript/Node.js** - Writing clean, efficient code in n8n Function nodes
+- ✅ **API design** - Building robust webhooks and REST endpoints
+- ✅ **Data transformation** - Processing and normalizing data between systems
+- ✅ **Error handling** - Implementing comprehensive error handling and logging
+- ✅ **Performance optimization** - Reducing API calls, batching operations, caching
+
+### Your Role in This Project
+
+- Design and implement n8n workflows following best practices
+- Write efficient JavaScript code for data processing and matching logic
+- Integrate Airtable, OpenAI, and other services seamlessly
+- Ensure security, scalability, and maintainability
+- Provide clear documentation and code comments
+- Follow the project's established patterns and standards
+
+---
+
+## 📚 Core Resources
+
+- [n8n Documentation](https://docs.n8n.io/)
+- [Airtable API](https://airtable.com/developers/web/api/introduction)
+- [OpenAI API](https://platform.openai.com/docs)
+
+**Project-Specific Documentation:**
+
+- Database schema: [schema/airtable-schema.md](schema/airtable-schema.md)
+- Workflow patterns: [schema/workflow-patterns.md](schema/workflow-patterns.md)
+- Code templates: [schema/code-templates.md](schema/code-templates.md)
+
+---
+
+## 🏗️ Architecture Principles
+
+### 1. Workflow Design Philosophy
+
+- **Single Responsibility:** Each workflow has ONE clear purpose
+- **Descriptive Naming:** Use clear node names (e.g., "Extract Company Skills" not "Function 1")
+- **Modularity:** Keep workflows under 20 nodes; split if larger
+- **Error First:** Always include error handling nodes
+- **Self-Documenting:** Add notes to complex nodes
+
+### 2. Database Strategy (Airtable)
+
+- **Leverage Airtable Features:** Use views, filters, and formulas instead of processing in n8n
+- **Normalize Data:** Keep schema clean and well-structured
+- **API Efficiency:** Batch operations, use views for filtering, minimize field fetching
+- **Never Hardcode:** Use environment variables for credentials
+
+### 3. LLM Integration Best Practices
+
+- **Default:** gpt-4o-mini (cost-effective, sufficient for most tasks)
+- **Upgrade to gpt-4o:** Only for critical accuracy requirements
+- **Always JSON Mode:** For structured data extraction
+- **Temperature 0.3:** For consistency (increase for creativity)
+- **Clear Prompts:** Be specific, include examples, define output format
+
+### 4. Code Quality Standards
+
+- **Meaningful Variables:** `mentorName` not `x` or `temp1`
+- **Error Handling:** Try-catch blocks, validate inputs, log errors
+- **Comments:** Explain WHY, not WHAT (code shows what)
+- **Helper Functions:** Extract reusable logic
+- **Validation First:** Check required fields before processing
+
+### 5. Data Flow Pattern
+
+```
+Input → Validate → Transform → Enrich (AI) → Store → Respond
+```
+
+---
+
+## 🔐 Security & Environment
+
+### Golden Rules
+
+1. ⛔ **NEVER** commit API keys or secrets to Git
+2. ⛔ **NEVER** expose credentials in workflow exports
+3. ✅ **ALWAYS** use n8n credentials manager
+4. ✅ **ALWAYS** validate and sanitize user inputs
+5. ✅ **ALWAYS** enable webhook authentication for production
+6. ✅ **ALWAYS** use HTTPS for webhooks in production
+
+### Required Credentials (n8n)
+
+- OpenAI API Key (Credential: "OpenAI")
+- Airtable Personal Access Token (Credential: "Airtable")
+- Optional: Webhook authentication token
+
+---
+
+## 🧪 Testing Standards
+
+### Before ANY Deployment
+
+- [ ] Test with sample data (minimum 10 records)
+- [ ] Test error scenarios (missing fields, invalid data)
+- [ ] Verify error handling works correctly
+- [ ] Check API rate limits aren't exceeded
+- [ ] Validate response times (< 5 seconds for matching)
+- [ ] Test webhook security if enabled
+
+### Performance Benchmarks
+
+- Skill extraction: < 2 seconds per mentor
+- Company matching: < 5 seconds total
+- Airtable API: < 500ms per call
+- OpenAI API: < 2 seconds per call
+
+---
+
+## 📝 Code Style Standards
+
+### n8n Function Nodes (JavaScript)
+
+**Good Example:**
+
+```javascript
+// Clear purpose, error handling, meaningful names
+const items = $input.all();
+
+try {
+  return items.map((item) => {
+    const mentor = item.json.fields;
+
+    // Validate required fields
+    if (!mentor.name || !mentor.email) {
+      throw new Error(`Invalid mentor: ${item.json.id}`);
+    }
+
+    return {
+      json: {
+        id: item.json.id,
+        processedData: transformData(mentor),
+      },
+    };
+  });
+} catch (error) {
+  console.error("Processing error:", error);
+  throw error;
+}
+```
+
+**Bad Example:**
+
+```javascript
+// Unclear, no validation, no error handling
+const x = $input.all();
+return x.map((i) => ({ json: { id: i.json.id, data: i.json.fields.name } }));
+```
+
+### LLM Prompt Structure
+
+**Template:**
+
+```javascript
+const prompt = `You are an expert [ROLE]. [TASK DESCRIPTION]
+
+Input Data:
+━━━━━━━━━━━━━━━━━━━━
+${data}
+━━━━━━━━━━━━━━━━━━━━
+
+Extract:
+1. [FIELD 1]: [CLEAR DESCRIPTION]
+2. [FIELD 2]: [CLEAR DESCRIPTION]
+
+RULES:
+✅ [RULE 1]
+✅ [RULE 2]  
+✅ Return ONLY valid JSON
+
+Output format:
+{
+  "field_1": "...",
+  "field_2": "..."
+}`;
+```
+
+---
+
+## 🔄 Version Control
+
+### Branch Strategy
+
+- `main` - Production-ready
+- `develop` - Development
+- `feature/[name]` - New features
+- `fix/[name]` - Bug fixes
+
+### Commit Messages
+
+```
+type(scope): brief description
+
+- Detailed change 1
+- Detailed change 2
+```
+
+**Types:** `feat`, `fix`, `docs`, `refactor`, `test`, `chore`
+
+**Examples:**
+
+- `feat(workflow): add skill extraction workflow`
+- `fix(matching): correct score calculation`
+- `docs(readme): update setup instructions`
+
+### What to Commit
+
+- ✅ Documentation (.md files)
+- ✅ Sample data (.csv)
+- ✅ Frontend code (.html, .js)
+- ✅ Workflow exports (.json - without credentials)
+- ⛔ API keys or secrets
+- ⛔ .env files
+- ⛔ n8n credentials
+- ⛔ Airtable data dumps
+
+---
+
+## ⚡ Performance & Optimization
+
+### API Call Reduction
+
+- Use Airtable views instead of filtering in n8n
+- Batch operations (10 records max per call)
+- Cache frequently accessed data
+- Only fetch required fields
+
+### LLM Cost Optimization
+
+- Use gpt-4o-mini by default (10x cheaper than gpt-4o)
+- Minimize prompt length
+- Cache similar requests
+- Batch where possible
+
+### Workflow Efficiency
+
+- Filter early in the pipeline
+- Avoid unnecessary transformations
+- Use parallel branches when possible
+- Set appropriate timeouts
+
+---
+
+## 🎯 Success Criteria
+
+**System is Production-Ready When:**
+
+- ✅ 95%+ successful execution rate
+- ✅ < 5 second end-to-end response time
+- ✅ Error rate < 1%
+- ✅ All documentation complete
+- ✅ Tested with diverse scenarios
+- ✅ Monitoring and logging in place
+
+**Quality Metrics:**
+
+- Match relevance: 70%+ average score
+- API costs: < $10/month
+- Zero security incidents
+- 99% webhook uptime
+
+---
+
+## 🐛 Debugging Approach
+
+### When Something Breaks
+
+1. Check n8n execution logs
+2. Enable debug mode in Function nodes
+3. Validate input data structure
+4. Check API credentials are valid
+5. Review rate limits (Airtable: 5 req/sec, OpenAI: 3 RPM)
+6. Test nodes individually
+7. Check error trigger path
+
+### Debug Mode Template
+
+```javascript
+const DEBUG = true;
+
+if (DEBUG) {
+  console.log("Input:", JSON.stringify($input.all(), null, 2));
+  console.log("Result:", JSON.stringify(result, null, 2));
+}
+```
+
+---
+
+## 📊 Monitoring
+
+### Track Daily
+
+- Workflow execution counts
+- API usage (OpenAI tokens, Airtable calls)
+- Error frequency
+- Response times
+
+### Review Weekly
+
+- Match quality scores
+- User feedback
+- Cost vs. budget
+- Optimization opportunities
+
+---
+
+## 🔄 Workflow Patterns
+
+For detailed workflow structures and code examples, see:
+
+- [schema/workflow-patterns.md](schema/workflow-patterns.md)
+- [schema/code-templates.md](schema/code-templates.md)
+- [schema/airtable-schema.md](schema/airtable-schema.md)
+
+---
+
+## 📞 Support Resources
+
+- **n8n Community:** https://community.n8n.io
+- **Airtable Support:** https://support.airtable.com
+- **OpenAI Help:** https://help.openai.com
+
+---
+
+**Last Updated:** January 2025  
+**Review Schedule:** Monthly
+
+---
+
+**Remember:**
+
+- Keep workflows simple and maintainable
+- Document complex logic
+- Test thoroughly before deploying
+- Monitor and optimize continuously

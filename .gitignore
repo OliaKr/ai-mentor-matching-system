@@ -1,0 +1,102 @@
+# n8n data
+n8n-data/
+.n8n/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# API Keys and secrets
+**/secrets/
+*.key
+*.pem
+credentials.json
+service-account.json
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Docker
+docker-compose.override.yml
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+.vs/
+
+# Node modules (if using any Node.js tools)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python (if using any Python tools)
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+env/
+ENV/
+
+# Test data
+data/test-*.csv
+data/backup/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Build outputs
+dist/
+build/
+*.zip
+*.tar.gz
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Project organization/planning files (not needed in repo)
+FINAL_ORGANIZATION.md
+ORGANIZATION_SUMMARY.md
+PROJECT_SETUP_COMPLETE.md
+START_HERE.md
+
+# Documentation drafts/internal notes
+docs/
+
+# Schema and workflow patterns (internal templates)
+schema/
+
+# Statement of Work documents (confidential)
+sow-mm/
+
+# n8n workflow exports (contain sensitive IDs)
+workflows/*.json
+
+# Workflow documentation and guides (internal use)
+workflows/COMPANY_MATCHING_GUIDE.md
+workflows/TEST_EXAMPLES.md
+workflows/README.md
+
