@@ -15,7 +15,7 @@ Built with n8n, Airtable, JavaScript and OpenAI
 ### For Startup Founders:
 
 - **Find Your Perfect Match**: Describe your business challenges in plain language, get matched with mentors who've solved similar problems
-- **Save Time**: Get top 5 mentor recommendations instantly instead of spending weeks networking
+- **Save Time**: Get top 3 mentor recommendations instantly instead of spending weeks networking
 - **Understand Why**: Every recommendation comes with clear reasoning about why this mentor fits your needs
 
 ### For Mentors:
@@ -30,6 +30,11 @@ Built with n8n, Airtable, JavaScript and OpenAI
 - ⚡ **Instant Results**: From company need to mentor recommendations in seconds
 - 📊 **Transparent**: Clear explanations for every match
 - 🔄 **Scalable**: Works whether you have 10 or 1000 mentors in your network
+
+### 💻 Live Demo
+
+A fully functional version (frontend + backend + n8n integration) is deployed privately.
+Access can be provided upon request.
 
 ## Frontend Interface
 
@@ -62,11 +67,9 @@ The system features a clean, intuitive web interface where companies can easily 
 
 ![Phase 3: Company Matching](frontend/src/images/company-matching.JPG)
 
-This project uses:
+## Tech Stack
 
-- **n8n** (workflow automation) - Can be deployed via Docker or n8n Cloud
-- **Airtable** (database) - Stores mentor profiles and match history
-- **OpenAI API** (AI/LLM) - Powers skill extraction and matching
+**n8n**, **Airtable**, **OpenAI API**, **Express.js**, **Tailwind CSS**, **JavaScript (ES6)**, **Node.js**
 
 ## Getting Started
 
