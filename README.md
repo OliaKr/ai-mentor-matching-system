@@ -31,32 +31,33 @@ Built with n8n, Airtable, JavaScript and OpenAI
 - 📊 **Transparent**: Clear explanations for every match
 - 🔄 **Scalable**: Works whether you have 10 or 1000 mentors in your network
 
-## 📊 Current Status
+## 📊 Workflows
 
-**Phase 1: Mentor Profile Processing** ✅ Complete
+**Phase 1: Mentor Profile Processing**
 
-Successfully processed **150 mentor profiles** with AI:
+- Processed profiles using AI to extract and categorize their expertise areas.
+- Each mentor's skills were analyzed and classified into primary, secondary, and tertiary categories across various sectors including CyberSecurity, E-commerce, etc.
 
-- Extracted primary, secondary, and tertiary skills for each mentor
-- Categorized mentors into industry sectors (CyberSecurity, E-commerce, APIs, Climate Impact, etc.)
-- 100% accuracy using GPT-4o-mini with batch processing
+![Phase 1: Mentor Profile Processing](images/phase1-mentor-processing.jpg)
 
-**Phase 2: Company Matching** 🚧 In Progress
+**Phase 2: Daily Mentor Skill Extraction**
 
-- Building smart matching algorithm
-- Implementing webhook-based API
-- Generating match explanations
+- Runs daily at 10 AM to automatically identify and process newly added or unprocessed mentor profiles.
+- Uses OpenAI to extract and categorize skills from new mentors, then updates their records in Airtable.
+- Ensures all mentor data is current and ready for matching without manual intervention.
 
-## 🚀 Getting Started
+![Phase 2: Daily Mentor Skill Extraction](images/daily-extraction.jpg)
+
+**Phase 3: Company Matching**
+
+- Companies type their requirements in the frontend interface and receive the top 3 best-matched mentors with AI-generated explanations.
+- The system analyzes mentor's data using OpenAI and returns detailed profiles including match scores, skills, and contact information.
+- All matching requests are automatically logged to Airtable for analytics and tracking.
+
+![Phase 3: Company Matching](images/company-matching.jpg)
 
 This project uses:
 
 - **n8n** (workflow automation) - Can be deployed via Docker or n8n Cloud
 - **Airtable** (database) - Stores mentor profiles and match history
 - **OpenAI API** (AI/LLM) - Powers skill extraction and matching
-
-See `workflows/` directory for importable n8n workflows.
-
----
-
-**Questions?** Open an issue or check the `workflows/README.md` for technical details.

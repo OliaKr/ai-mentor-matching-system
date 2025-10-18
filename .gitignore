@@ -77,11 +77,6 @@ build/
 *.backup
 *~
 
-# Project organization/planning files (not needed in repo)
-FINAL_ORGANIZATION.md
-ORGANIZATION_SUMMARY.md
-PROJECT_SETUP_COMPLETE.md
-START_HERE.md
 
 # Documentation drafts/internal notes
 docs/
@@ -95,8 +90,4 @@ sow-mm/
 # n8n workflow exports (contain sensitive IDs)
 workflows/*.json
 
-# Workflow documentation and guides (internal use)
-workflows/COMPANY_MATCHING_GUIDE.md
-workflows/TEST_EXAMPLES.md
-workflows/README.md
 
