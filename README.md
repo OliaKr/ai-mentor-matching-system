@@ -4,13 +4,13 @@ Built with n8n, Airtable, JavaScript and OpenAI
 
 > **Helping startups and new companies find the perfect mentor to accelerate their growth**
 
-## 💡 Goal
+## Goal
 
 **The Challenge**: Early-stage companies and startups often struggle to find the right mentor who truly understands their specific industry, challenges, and growth stage. Traditional networking is time-consuming, and finding someone with relevant expertise feels like searching for a needle in a haystack.
 
 **Solution**: An AI-powered system that automatically analyzes mentor expertise and matches startups with the most suitable mentors based on their unique needs - delivering personalized recommendations in seconds, not weeks.
 
-## 🎯 How It Helps Startups
+## How It Helps Startups
 
 ### For Startup Founders:
 
@@ -24,14 +24,14 @@ Built with n8n, Airtable, JavaScript and OpenAI
 - **Relevant Connections**: They get matched only with companies that need your specific skills
 - **Clear Classification**: Mentor's experience is categorized into primary, secondary, and tertiary expertise areas
 
-## ✨ What Makes This Special
+## What Makes This Special
 
 - 🎯 **Smart Matching**: Goes beyond keywords - understands context and expertise depth
 - ⚡ **Instant Results**: From company need to mentor recommendations in seconds
 - 📊 **Transparent**: Clear explanations for every match
 - 🔄 **Scalable**: Works whether you have 10 or 1000 mentors in your network
 
-## 📊 Workflows
+## Workflows
 
 **Phase 1: Mentor Profile Processing**
 
@@ -54,7 +54,7 @@ Built with n8n, Airtable, JavaScript and OpenAI
 - The system analyzes mentor's data using OpenAI and returns detailed profiles including match scores, skills, and contact information.
 - All matching requests are automatically logged to Airtable for analytics and tracking.
 
-![Phase 3: Company Matching](images/company-matching.jpg)
+![Phase 3: Company Matching](images/company-matching.JPG)
 
 This project uses:
 
