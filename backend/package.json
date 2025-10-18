@@ -1,0 +1,24 @@
+{
+  "name": "mentor-matching-backend",
+  "version": "1.0.0",
+  "description": "Backend proxy for AI Mentor Matching System",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  },
+  "keywords": [
+    "mentor",
+    "matching",
+    "ai",
+    "n8n"
+  ],
+  "author": "Olia Krasilnikov",
+  "license": "MIT"
+}

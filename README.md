@@ -31,6 +31,12 @@ Built with n8n, Airtable, JavaScript and OpenAI
 - 📊 **Transparent**: Clear explanations for every match
 - 🔄 **Scalable**: Works whether you have 10 or 1000 mentors in your network
 
+## Frontend Interface
+
+The system features a clean, intuitive web interface where companies can easily describe their needs and receive instant mentor recommendations:
+
+![Mentor Matching System Interface](frontend/src/images/matching-system-pic.JPG)
+
 ## Workflows
 
 **Phase 1: Mentor Profile Processing**
@@ -38,7 +44,7 @@ Built with n8n, Airtable, JavaScript and OpenAI
 - Processed profiles using AI to extract and categorize their expertise areas.
 - Each mentor's skills were analyzed and classified into primary, secondary, and tertiary categories across various sectors including CyberSecurity, E-commerce, etc.
 
-![Phase 1: Mentor Profile Processing](images/phase1-mentor-processing.jpg)
+![Phase 1: Mentor Profile Processing](frontend/src/images/phase1-mentor-processing.jpg)
 
 **Phase 2: Daily Mentor Skill Extraction**
 
@@ -46,7 +52,7 @@ Built with n8n, Airtable, JavaScript and OpenAI
 - Uses OpenAI to extract and categorize skills from new mentors, then updates their records in Airtable.
 - Ensures all mentor data is current and ready for matching without manual intervention.
 
-![Phase 2: Daily Mentor Skill Extraction](images/daily-extraction.jpg)
+![Phase 2: Daily Mentor Skill Extraction](frontend/src/images/daily-extraction.jpg)
 
 **Phase 3: Company Matching**
 
@@ -54,10 +60,95 @@ Built with n8n, Airtable, JavaScript and OpenAI
 - The system analyzes mentor's data using OpenAI and returns detailed profiles including match scores, skills, and contact information.
 - All matching requests are automatically logged to Airtable for analytics and tracking.
 
-![Phase 3: Company Matching](images/company-matching.JPG)
+![Phase 3: Company Matching](frontend/src/images/company-matching.JPG)
 
 This project uses:
 
 - **n8n** (workflow automation) - Can be deployed via Docker or n8n Cloud
 - **Airtable** (database) - Stores mentor profiles and match history
 - **OpenAI API** (AI/LLM) - Powers skill extraction and matching
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- n8n instance (local or cloud)
+- Airtable account with API access
+- OpenAI API key
+
+### Environment Variables
+
+Create a `.env` file in the project root with the following variables:
+
+```env
+# OpenAI Configuration
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Airtable Configuration
+AIRTABLE_API_KEY=your_airtable_personal_access_token
+AIRTABLE_BASE_ID=your_airtable_base_id
+AIRTABLE_MENTORS_TABLE=your_mentors_table_name
+AIRTABLE_MATCHES_TABLE=your_matches_table_name
+
+# n8n Webhook Configuration
+N8N_WEBHOOK_URL=your_n8n_webhook_url_here
+
+# Backend Configuration (optional)
+PORT=3001
+```
+
+### Installation & Setup
+
+1. **Clone the repository**
+
+   ```bash
+   git clone <repository-url>
+   cd ai-mentor-matching
+   ```
+
+2. **Install backend dependencies**
+
+   ```bash
+   cd backend
+   npm install
+   ```
+
+3. **Configure your .env file**
+
+   - Copy the environment variables above
+   - Fill in your actual API keys and configuration
+
+4. **Set up n8n workflows**
+
+- Create the mentor matching workflows in your n8n instance
+- Set up webhook nodes to receive company matching requests
+- Configure OpenAI and Airtable nodes for data processing
+- Update the `N8N_WEBHOOK_URL` in your `.env` file with your webhook URL
+
+5. **Start the backend server**
+
+   ```bash
+   cd backend
+   npm start
+   ```
+
+6. **Access the frontend**
+   - Open your browser and go to `http://localhost:3001`
+   - The backend serves both the API and frontend files
+
+### Testing the System
+
+1. **Health Check**: Visit `http://localhost:3001/health`
+2. **API Test**: Use the provided `test-api.js` script
+   ```bash
+   node test-api.js
+   ```
+3. **Frontend Test**: Fill out the form on `http://localhost:3001` and submit a mentor matching request
+
+### Troubleshooting
+
+- **Backend won't start**: Check that all environment variables are set correctly
+- **API errors**: Verify your OpenAI and Airtable API keys are valid
+- **Frontend not loading**: Ensure the backend is running and serving static files
+- **No matches returned**: Check that your n8n workflows are active and webhook URLs are correct
