@@ -1,8 +1,10 @@
 # AI-Powered Mentor Matching System
 
-Built with n8n, Airtable, JavaScript and OpenAI
-
 > **Helping startups and new companies find the perfect mentor to accelerate their growth**
+
+## Tech Stack
+
+**n8n**, **Airtable**, **OpenAI API**, **Express.js**, **Tailwind CSS**, **JavaScript (ES6)**, **Node.js**
 
 ## Goal
 
@@ -66,10 +68,6 @@ The system features a clean, intuitive web interface where companies can easily 
 - All matching requests are automatically logged to Airtable for analytics and tracking.
 
 ![Phase 3: Company Matching](frontend/src/images/company-matching.JPG)
-
-## Tech Stack
-
-**n8n**, **Airtable**, **OpenAI API**, **Express.js**, **Tailwind CSS**, **JavaScript (ES6)**, **Node.js**
 
 ## Getting Started
 
@@ -148,10 +146,3 @@ PORT=3001
    node test-api.js
    ```
 3. **Frontend Test**: Fill out the form on `http://localhost:3001` and submit a mentor matching request
-
-### Troubleshooting
-
-- **Backend won't start**: Check that all environment variables are set correctly
-- **API errors**: Verify your OpenAI and Airtable API keys are valid
-- **Frontend not loading**: Ensure the backend is running and serving static files
-- **No matches returned**: Check that your n8n workflows are active and webhook URLs are correct
