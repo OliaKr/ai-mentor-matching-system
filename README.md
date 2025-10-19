@@ -44,6 +44,12 @@ The system features a clean, intuitive web interface where companies can easily 
 
 ![Mentor Matching System Interface](frontend/src/images/matching-system-pic.JPG)
 
+### Example of AI-Generated Match Explanation
+
+Each mentor card includes an AI-generated explanation showing _why_ this mentor is a strong match — not just based on keywords, but on contextual understanding of skills and business needs.
+
+![Example Match Explanation](frontend/src/images/example-match-card.JPG)
+
 ## Workflows
 
 **Phase 1: Mentor Profile Processing**
